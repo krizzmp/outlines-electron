@@ -1,9 +1,9 @@
 var React = require('react');
-
 var TreeView = require('./components/tree-view-compiled');
 
 var App = React.createClass({
     render(){
+        var actionsShow = false;
         return (
 
             <div className="app" ref='app'>
@@ -12,7 +12,7 @@ var App = React.createClass({
                 <div className="inspector">
                     hello
                 </div>
-                {false?<div className="modal-container">
+                {actionsShow ? <div className="modal-container">
                     <div className="modal-top well">
                         <input type="text" className="form-control" placeholder="Text input"/>
                         <ul className="list-group">
@@ -22,7 +22,7 @@ var App = React.createClass({
                             <li className="list-group-item">Videos</li>
                         </ul>
                     </div>
-                </div>:null}
+                </div> : null}
             </div>
         );
     }

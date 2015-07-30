@@ -3,31 +3,18 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var _todos = {
+var _files = {
     module: 'Drafts',
     children: []
-}; // collection of todo items
-function find(nodeId, node) {
+}; 
 
-    if (node.id == nodeId) {
-        return node;
-    } else {
-        for (var i = 0; i < node.children.length; i++) {
-            var g = find(nodeId, node.children[i]);
-            if (g) {
-                return g
-            }
-        }
-    }
-}
-
-var TodoStore = assign({}, EventEmitter.prototype, {
+var FileStore = assign({}, EventEmitter.prototype, {
 
     getAll: function () {
-        return _todos;
+        return _files;
     },
     setAll(tree){
-        _todos = tree;
+        _files = tree;
         this.emitChange();
     },
     createUnder(node){
@@ -51,5 +38,5 @@ var TodoStore = assign({}, EventEmitter.prototype, {
     }
 
 });
-TodoStore.createUnder(_todos);
-module.exports = TodoStore;
+FileStore.createUnder(_files);
+module.exports = FileStore;
